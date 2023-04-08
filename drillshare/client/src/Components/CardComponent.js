@@ -18,7 +18,8 @@ import axios from 'axios';
 import {useNavigate, useLocation} from 'react-router-dom';
 const _ = require('lodash');
 
-const URL = process.env.REACT_APP_URL;
+// const URL = process.env.REACT_APP_URL;
+const URL = `http://localhost:5000/api/`;
 
 // styling for filter popup
 const style = {
@@ -68,7 +69,8 @@ function CardComponent() {
     axios
         .get(URL)
         .then((res) => {
-          setListings(res.data.listings);
+          console.log(res.data);
+          setListings(res.data);
         })
         .catch((e) => console.log(e));
   }, []);
