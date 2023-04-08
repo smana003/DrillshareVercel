@@ -19,9 +19,9 @@ import axios from 'axios';
 import {useNavigate, useLocation} from 'react-router-dom';
 const _ = require('lodash');
 
-const URL = process.env.REACT_APP_URL;
-console.log(URL);
-// const URL = `http://localhost:5000/api/`;
+// const URL = process.env.REACT_APP_URL;
+// console.log(URL);
+const URL = `http://localhost:5000/api/`;
 
 // styling for filter popup
 const style = {
