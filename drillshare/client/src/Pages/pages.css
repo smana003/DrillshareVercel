@@ -1,0 +1,56 @@
+#create-tool {
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  border-radius: 4px;
+  align-content: center;
+}
+
+#create-listing {
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  border-radius: 4px;
+  align-content: center;
+}
+
+.label-input {
+  height: 35px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.cards {
+  /* background-color: rgb(207, 206, 206); */
+  display: grid;
+  margin: auto;
+  justify-self: center;
+  grid-template-columns: repeat(5, 207px);
+  grid-template-rows: repeat(auto-fill, 300px);
+  /* grid-gap: 20px; */
+  /* float: left; */
+  width: 1035px;
+}
+
+.listing-card {
+  background-color: rgb(207, 206, 206);
+  display: grid;
+  margin: auto;
+  justify-self: center;
+  width: 200px;
+  height: 275px;
+  border-radius: 5px;
+  border-style: inset;
+  cursor: pointer;
+}
+
+.listing-card:hover {
+  transform: scale(1.03);
+}
+
+.image-card {
+  object-fit: cover;
+  width: 190px;
+  height: auto;
+  margin-left: 5px;
+}
