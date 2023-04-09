@@ -1,0 +1,1 @@
+export const secret = "cant-guess-this-key-fr";

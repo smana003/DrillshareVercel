@@ -53,6 +53,8 @@
     ]
   },
   "react-dotenv": {
-    "whitelist": ["REACT_APP_URL"]
+    "whitelist": [
+      "REACT_APP_URL"
+    ]
   }
 }

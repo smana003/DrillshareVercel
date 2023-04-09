@@ -20,4 +20,4 @@ const ListingSchema = new mongoose.Schema({
 
 const Listing = mongoose.model('Listing', ListingSchema);
 
-export default Listing
+export default Listing;

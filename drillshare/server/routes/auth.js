@@ -1,6 +1,6 @@
-import { checkDuplicateUsernameOrEmail } from "../middlewares/verifySignUp";
-import { signup, signin } from "../controllers/auth";
-module.exports = function(app) {
+import { checkDuplicateUsernameOrEmail } from "../middlewares/verifySignUp.js";
+import { signup, signin } from "../controllers/auth.js";
+export default function(app) {
     app.use(function(req, res, next) {
         res.header(
             "Access-Control-Allow-Headers",

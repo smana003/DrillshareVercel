@@ -71,8 +71,8 @@ function CardComponent() {
     axios
         .get(URL)
         .then((res) => {
-          console.log(res.data);
-          setListings(res.data);
+          console.log(res.data.listings);
+          setListings(res.data.listings);
         })
         .catch((e) => console.log(e));
   }, []);

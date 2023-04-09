@@ -1,4 +1,5 @@
-const { MongoClient } = require("mongodb");
+// const { MongoClient } = require("mongodb");
+import { MongoClient } from "mongodb";
 const Db = process.env.MONGO_URL;
 const client = new MongoClient(Db, {
   useNewUrlParser: true,

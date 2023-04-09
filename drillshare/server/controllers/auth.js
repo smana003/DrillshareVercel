@@ -2,9 +2,9 @@ import User from '../model/User.js';
 import Profile from '../model/Profile.js';
 import Payment from '../model/Payment.js';
 
-const config = require('../config/auth.config.js');
-var jwt = require('jsonwebtoken');
-var bcrypt = require('bcryptjs');
+import * as config from '../config/auth.config.js';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 // import { createProfile } from "../controllers/ProfileController";
 
 export const signup = (req, res) => {
