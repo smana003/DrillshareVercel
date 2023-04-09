@@ -1,26 +1,19 @@
-// import indexRouter from "./routes/index.js";
+import morgan from "morgan";
+import 'dotenv/config'
+import express from "express";
+import cors from 'cors';
+
 import router from "./routes/index.js";
 import { checkDuplicateUsernameOrEmail } from "./middlewares/verifySignUp.js";
 import { signup, signin } from "./controllers/auth.js";
 import { verifyToken} from "./middlewares/authJwt.js";
 import { allAccess, userBoard } from "./controllers/UserController.js";
 
-import morgan from "morgan";
-import 'dotenv/config'
-import express from "express";
-import cors from 'cors';
 const app = express()
-// const cors = require('cors');
-
 app.use(cors())
-
 app.use(express.json());
-
 app.use(express.urlencoded({ extended: true }));
-
-
 app.set("port", 5000);
-
 app.use(router);
 app.use(morgan("dev"));
 
@@ -29,12 +22,6 @@ app.use(morgan("dev"));
  */
 // require('./routes/auth')(app);
 // require('./routes/user')(app);
-
-// app.use(route);
-// app.use(auth);
-// app.use(user);
-// app.use('./routes/auth');
-// app.use('./routes/user');
 
 app.use(function (req, res, next) {
   res.header(

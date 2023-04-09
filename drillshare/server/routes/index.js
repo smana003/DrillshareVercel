@@ -12,7 +12,6 @@ import {getPayment, updatePayment} from "../controllers/PaymentController.js";
 import { createReview, deleteReviewById, getReviewsById } from "../controllers/ReviewController.js";
 
 const router = Router();
-// const PATH = "/api";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
