@@ -1,10 +1,9 @@
 import express from "express";
 import { Router } from "express";
-// const multer = require('multer');
-// const path = require('path');
 import multer from 'multer';
 import path from 'path';
-// import { getListings } from "../controllers/ListingController.js";
+import { fileURLToPath } from "url";
+
 import { getListings, createListing, searchListing, deleteListingById, updateListing, getOwnedListings, getRentedListings} from "../controllers/ListingController.js";
 import { createTool, getToolCategoryById } from "../controllers/ToolController.js";
 import { getUserById } from "../controllers/UserController.js";
@@ -13,16 +12,18 @@ import {getPayment, updatePayment} from "../controllers/PaymentController.js";
 import { createReview, deleteReviewById, getReviewsById } from "../controllers/ReviewController.js";
 
 const router = Router();
-const PATH = "/api";
+// const PATH = "/api";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 router.use(express.urlencoded({extended:true}))
 router.use(express.json())
 
-
-
 const imageStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../../public/img'));
+    console.log('destination');
+    console.log(__dirname);
+    cb(null, path.join(__dirname, '../../client/public/img'));
   },
   filename: (req, file, cb) => {
     console.log('multer: ', file)
