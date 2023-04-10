@@ -24,6 +24,7 @@ app.use(morgan("dev"));
 // require('./routes/user')(app);
 
 app.use(function (req, res, next) {
+  res.set('Access-Control-Allow-Origin', '*');
   res.header(
     "Access-Control-Allow-Headers",
     "x-access-token, Origin, Content-Type, Accept"
@@ -40,6 +41,7 @@ app.post(
 app.post("/api/auth/signin", signin);
 
 app.use(function (req, res, next) {
+  res.set('Access-Control-Allow-Origin', '*');
   res.header(
     "Access-Control-Allow-Headers",
     "x-access-token, Origin, Content-Type, Accept"
