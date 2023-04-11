@@ -4,7 +4,7 @@ import { connect } from "mongoose";
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-const connectionString = `mongodb+srv://smanandhar96:9LlU9tE6JykX8qZ4@drillshare.71qidhy.mongodb.net/?retryWrites=true&w=majority`;
+const connectionString = `${process.env.MONGO_URL}`;
 
 (async () => {
     try {

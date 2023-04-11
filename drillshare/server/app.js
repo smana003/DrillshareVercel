@@ -9,11 +9,13 @@ import { signup, signin } from "./controllers/auth.js";
 import { verifyToken} from "./middlewares/authJwt.js";
 import { allAccess, userBoard } from "./controllers/UserController.js";
 
+const PORT = process.env.PORT;
+
 const app = express()
-app.use(cors({origin: true}))
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.set("port", 5000);
+app.set("port", PORT);
 app.use(router);
 app.use(morgan("dev"));
 
@@ -23,14 +25,13 @@ app.use(morgan("dev"));
 // require('./routes/auth')(app);
 // require('./routes/user')(app);
 
-// app.use(function (req, res, next) {
-//   res.set('Access-Control-Allow-Origin', '*');
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "x-access-token, Origin, Content-Type, Accept"
-//   );
-//   next();
-// });
+app.use(function (req, res, next) {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-access-token, Origin, Content-Type, Accept"
+  );
+  next();
+});
 app.post(
   "/api/auth/signup",
   [
@@ -40,14 +41,13 @@ app.post(
 );
 app.post("/api/auth/signin", signin);
 
-// app.use(function (req, res, next) {
-//   res.set('Access-Control-Allow-Origin', '*');
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "x-access-token, Origin, Content-Type, Accept"
-//   );
-//   next();
-// });
+app.use(function (req, res, next) {
+  res.header(
+    "Access-Control-Allow-Headers",
+    "x-access-token, Origin, Content-Type, Accept"
+  );
+  next();
+});
 app.get("/api/test/all", allAccess);
 app.get("/api/test/user", [verifyToken], userBoard);
 
@@ -56,8 +56,8 @@ app.get("/api/test/user", [verifyToken], userBoard);
  * resource requested could not be found.
  */
 app.use((req, res, next) => {
-  console.log(req.body);
-  console.log(res.body);
+  console.log('req.body: ', req.body);
+  console.log('res.body: ', res.body);
   console.log("we hit a snag");
   res.send("Error 404");
 })
