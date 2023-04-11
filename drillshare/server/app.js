@@ -10,7 +10,7 @@ import { verifyToken} from "./middlewares/authJwt.js";
 import { allAccess, userBoard } from "./controllers/UserController.js";
 
 const app = express()
-app.use(cors())
+app.use(cors({origin: true}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("port", 5000);
@@ -23,14 +23,14 @@ app.use(morgan("dev"));
 // require('./routes/auth')(app);
 // require('./routes/user')(app);
 
-app.use(function (req, res, next) {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.header(
-    "Access-Control-Allow-Headers",
-    "x-access-token, Origin, Content-Type, Accept"
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.set('Access-Control-Allow-Origin', '*');
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "x-access-token, Origin, Content-Type, Accept"
+//   );
+//   next();
+// });
 app.post(
   "/api/auth/signup",
   [
@@ -40,14 +40,14 @@ app.post(
 );
 app.post("/api/auth/signin", signin);
 
-app.use(function (req, res, next) {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.header(
-    "Access-Control-Allow-Headers",
-    "x-access-token, Origin, Content-Type, Accept"
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.set('Access-Control-Allow-Origin', '*');
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "x-access-token, Origin, Content-Type, Accept"
+//   );
+//   next();
+// });
 app.get("/api/test/all", allAccess);
 app.get("/api/test/user", [verifyToken], userBoard);
 
