@@ -23,12 +23,12 @@ export const signup = (req, res) => {
   } else {
     user.save((err, user) => {
       if (err) {
-        res.status(500).send({message: err});
+        res.status(500).send({ message: err });
         return;
       }
       user.save(err => {
         if (err) {
-          res.status(500).send({message: err});
+          res.status(500).send({ message: err });
           return;
         }
 
@@ -55,7 +55,7 @@ export const signup = (req, res) => {
 
         payment.save();
 
-        res.send({user: user, message: 'User was registered successfully!'});
+        res.send({ user: user, message: 'User was registered successfully!' });
       });
 
     });
@@ -65,15 +65,16 @@ export const signup = (req, res) => {
 };
 
 export const signin = async (req, res) => {
-  const user = await User.findOne({username: req.body.username});
+  const user = await User.findOne({ username: req.body.username });
   if (!user) {
-    return res.status(404).send({message: 'User Not found.'});
+    return res.status(404).send({ message: 'User Not found.' });
   }
+  console.log("user: ", user);
   Profile.findOne({
     userId: user._id,
   }).exec((err, profile) => {
     if (err) {
-      res.status(500).send({message: err});
+      res.status(500).send({ message: err });
       return;
     }
     var passwordIsValid = bcrypt.compareSync(
@@ -86,13 +87,14 @@ export const signin = async (req, res) => {
         message: 'Invalid Password!',
       });
     }
-    var token = jwt.sign({id: user.id}, config.secret, {
+    var token = jwt.sign({ id: user.id }, config.secret, {
       expiresIn: 86400,
     });
     if (profile.driversLicence && profile.address) {
       Payment.findOne({
-        userId: user._id,
+        userID: user._id,
       }).exec((err, payment) => {
+        console.log("pay: ", payment);
         if (payment.cardNumber) {
           return res.status(200).send({
             id: user._id,
