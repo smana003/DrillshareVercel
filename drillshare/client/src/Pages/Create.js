@@ -318,14 +318,14 @@ const Create = () => {
           </Button>
         </Tooltip>
 
-        <Button
+        {/* <Button
           sx={{ mt: 5, mb: 5 }}
           variant="contained"
           onClick={createListing}
           id="create-new-listing-button"
         >
           Create Listing
-        </Button>
+        </Button> */}
 
       </Box>
     </Container>
