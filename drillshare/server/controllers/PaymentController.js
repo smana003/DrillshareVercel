@@ -40,7 +40,7 @@ export const createPayment = async (req, res, next) => {
 export const updatePayment = async (req, res, next) => {
   try {
 
-    console.log(req);
+    console.log("HERE: ", req.body);
     const filter = { userID: req.body.userid };
     const update = {
       cardNumber: req.body.cardNumber,
@@ -52,6 +52,8 @@ export const updatePayment = async (req, res, next) => {
     let doc = await Payment.findOneAndUpdate(filter, update, {
       new: true
     });
+
+    console.log('Doc: ', doc);
 
     res.send("Payment information updated");
   } catch (error) {

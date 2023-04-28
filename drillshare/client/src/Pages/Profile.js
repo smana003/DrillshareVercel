@@ -59,8 +59,8 @@ export default function Profile() {
               setPhone(profile.phone);
               setDriversLicence(profile.driversLicence);
               setAddress(profile.address);
-              // setDob(format(parseISO(profile.dob), 'MM/dd/yyyy'));
-              setDob(profile.dob);
+              setDob(format(parseISO(profile.dob), 'MM/dd/yyyy'));
+              // setDob(profile.dob);
             } else {
               console.log('Couldn\'t get profile:' +
               Session.get('token')['id']);
@@ -72,11 +72,12 @@ export default function Profile() {
       axios.get(`${URL}getPayment?_id=${Session.get('token').id}`)
           .then((res) => {
             if (res.data) {
+              console.log(res.data);
               const cc = res.data.payment[0];
               setCC(cc.cardNumber);
               setCardType(cc.creditcardType);
               // setExpDate(cc.expDate);
-              setExpDate(format(Date.parse(cc.expDate), 'MM/yy'));
+              setExpDate(format(Date.parse(cc.expDate), 'MM/dd'));
               setAuthCode(cc.authCode);
             } else {
               console.log('Couldn\'t get CC of ' + Session.get('token')['id']);
@@ -317,7 +318,7 @@ export default function Profile() {
                       <Form.Label textAlign="left">Card Number</Form.Label>
                       <Form.Control fullwidth>
                         <Form.Input
-                          placeholder="4043 1234 5678 9011"
+                          placeholder="1234 1234 1234"
                           value={cc || ''}
                           onChange={(e) => {
                             return setCC(e.target.value);
@@ -335,7 +336,7 @@ export default function Profile() {
                       <Form.Label textAlign={'left'}>Exp. Date</Form.Label>
                       <Form.Control fullwidth>
                         <Form.Input
-                          placeholder="02/29"
+                          placeholder="01/25"
                           value={expDate || ''}
                           // value={format(new Date(expDate),
                           // 'MM/yy') || '02/29'}
@@ -371,7 +372,7 @@ export default function Profile() {
                           }}
                         >
                           <option value="Current">
-                            Mastercard
+                            {cardType}
                           </option>
                           {cardType !== 'Mastercard' &&
                             <option value="Mastercard">
