@@ -85,7 +85,7 @@ function ProductReview(prop) {
         })
         .catch((e) => console.log(e));
 
-      // window.location.reload();
+      window.location.reload();
     } else {
       alert('Write a review and pick a rating to post!');
     }
