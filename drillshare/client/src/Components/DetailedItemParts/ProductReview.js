@@ -80,15 +80,16 @@ function ProductReview(prop) {
               setComment('');
               setValue(0);
               document.getElementById('review-text-field').value = '';
+              window.location.reload();
             })
             .catch((e) => console.log(e));
         })
         .catch((e) => console.log(e));
+
+      
     } else {
       alert('Write a review and pick a rating to post!');
     }
-    
-    window.location.reload();
   };
 
   const deleteReview = (review) => {
