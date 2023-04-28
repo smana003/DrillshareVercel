@@ -84,11 +84,11 @@ function ProductReview(prop) {
             .catch((e) => console.log(e));
         })
         .catch((e) => console.log(e));
-
-      window.location.reload();
     } else {
       alert('Write a review and pick a rating to post!');
     }
+    
+    window.location.reload();
   };
 
   const deleteReview = (review) => {
